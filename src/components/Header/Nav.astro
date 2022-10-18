@@ -1,0 +1,83 @@
+---
+const pathname = new URL(Astro.request.url).pathname;
+const currentPath = pathname.slice(1); // remove the first "/"
+
+const dynamicColor = 'rgb(151,233,242)';
+
+console.log(currentPath);
+---
+
+<nav>
+  <div>
+    <a href="/" class={currentPath === '' ? 'active' : ''}>Home</a>
+
+    <a href="/about" class={currentPath === 'about' ? 'active' : ''}>About</a>
+  </div>
+</nav>
+
+<style define:vars={{ dynamicColor }}>
+  nav {
+    background-color: rgb(40, 43, 53);
+  }
+
+  nav div {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: rgb(164, 164, 164);
+  }
+
+  nav div a {
+    border-bottom-width: 2px;
+    border-color: transparent;
+    transition: all 0.3s ease-in-out;
+    margin-left: 0.375rem;
+    margin-right: 0.375rem;
+  }
+
+  nav div a:hover {
+    color: rgb(241, 241, 241);
+    border-color: var(--dynamicColor);
+  }
+
+  .active {
+    color: rgb(241, 241, 241);
+    border-bottom-width: 2px;
+    border-color: var(--dynamicColor);
+  }
+
+  @media (min-width: 640px) {
+    nav div {
+      max-width: 640px;
+    }
+
+    nav div a {
+      margin-left: 1.5rem;
+      margin-right: 1.5rem;
+    }
+  }
+  @media (min-width: 768px) {
+    nav div {
+      max-width: 768px;
+    }
+  }
+  @media (min-width: 1024px) {
+    nav div {
+      max-width: 1024px;
+    }
+  }
+  @media (min-width: 1280px) {
+    nav div {
+      max-width: 1280px;
+    }
+  }
+  @media (min-width: 1536px) {
+    nav div {
+      max-width: 1536px;
+    }
+  }
+</style>
