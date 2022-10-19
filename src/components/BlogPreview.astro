@@ -1,0 +1,74 @@
+---
+import { getSlug } from '@/utils/getSlugFromFile';
+
+export type Props = {
+  post: any;
+};
+
+const { post } = Astro.props;
+
+const postUrl = 'blog/post/' + getSlug(post.file);
+---
+
+<a href={postUrl}>
+  <div class="preview">
+    <div class="preview-content">
+      {
+        post.frontmatter.imageUrl && (
+          <img src={post.frontmatter.imageUrl} width="200px" />
+        )
+      }
+      <h2>{post.frontmatter.title}</h2>
+      <p>{post.frontmatter.description}</p>
+    </div>
+    <div class="preview-info">
+      <span class="preview-info-date">{post.frontmatter.date}</span>
+      <span class="preview-info-read">
+        &#8226 {post.frontmatter.read} read</span
+      >
+    </div>
+  </div>
+</a>
+
+<style>
+  .preview {
+    color: rgb(72, 72, 72);
+    padding: 20px;
+    background-color: transparent;
+    border-radius: 20px;
+    transition: all 0.2s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    /* -webkit-box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, 0.56);
+    box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, 0.18);
+  } */
+  }
+
+  .preview:hover {
+    background-color: rgb(245, 244, 252);
+    -webkit-box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, 0.56);
+    box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, 0.15);
+  }
+  .preview h2 {
+    margin: 0;
+    font-weight: bold;
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: rgb(126, 174, 230);
+  }
+  .preview p {
+    margin: 0;
+    line-height: 1.4;
+  }
+
+  .preview-info {
+    margin-top: 10px;
+    font-size: 12px;
+  }
+
+  .preview-info-read {
+    font-weight: bold;
+  }
+</style>

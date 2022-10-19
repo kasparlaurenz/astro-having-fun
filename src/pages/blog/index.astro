@@ -1,0 +1,42 @@
+---
+import '@/style/global.css';
+
+import BlogPreview from '@/components/BlogPreview.astro';
+import Layout from '@/Layouts/Layout.astro';
+
+const posts = await Astro.glob('../../content/posts/*.md');
+const sortedPosts = posts.sort(
+  (a, b) =>
+    new Date(b.frontmatter.date).valueOf() -
+    new Date(a.frontmatter.date).valueOf()
+);
+---
+
+<Layout>
+  <h1 class="">Blog Articles</h1>
+
+  <ul>
+    {
+      sortedPosts.map(p => (
+        <li>
+          <BlogPreview post={p} />
+        </li>
+      ))
+    }
+  </ul>
+</Layout>
+
+<style>
+  h1 {
+    margin-top: 20px;
+    font-size: 2rem;
+    font-weight: bold;
+  }
+
+  ul {
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+</style>
