@@ -1,0 +1,49 @@
+---
+import '@/style/global.scss';
+import Layout from '@/Layouts/Layout.astro';
+
+export const dynamicColor = 'rgb(151,233,242)';
+---
+
+<Layout>
+  <div class="home flex flex-col items-start">
+    <h1 class="text-gradient-animation">kasparlaurenz</h1>
+
+    <div>
+      <a class="" href="/blog">Visit my blog</a>
+    </div>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .home {
+    padding-top: 60%;
+    div {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
+
+      // &:hover {
+      //   transform: translateX(10px);
+      // }
+
+      a {
+        text-align: left;
+        display: block;
+        border: 3px solid #999999;
+        width: 100%;
+        padding: 20px 40px;
+        background-color: rgb(126, 174, 230);
+        border-radius: 50px;
+        font-size: 1.5rem;
+        color: white;
+        transition: all 0.3s ease-in-out;
+        &:hover {
+          background-color: rgb(177, 208, 243);
+          cursor: pointer;
+        }
+      }
+    }
+  }
+</style>

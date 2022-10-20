@@ -1,4 +1,5 @@
 ---
+import '@/style/global.scss';
 import { getSlug } from '@/utils/getSlugFromFile';
 
 export type Props = {
@@ -11,7 +12,7 @@ const postUrl = 'blog/post/' + getSlug(post.file);
 ---
 
 <a href={postUrl}>
-  <div class="preview">
+  <div class="preview flex flex-col">
     <div class="preview-content">
       {
         post.frontmatter.imageUrl && (
@@ -37,8 +38,6 @@ const postUrl = 'blog/post/' + getSlug(post.file);
     background-color: transparent;
     border-radius: 20px;
     transition: all 0.2s ease-in-out;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     align-items: flex-start;
     /* -webkit-box-shadow: 4px 5px 10px -1px rgba(0, 0, 0, 0.56);

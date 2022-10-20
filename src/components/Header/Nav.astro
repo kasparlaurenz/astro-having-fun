@@ -6,37 +6,39 @@ import { dynamicColor } from '@/pages/index.astro';
 ---
 
 <nav>
-  <div>
-    <a href="/" class={currentPath === '' ? 'active' : ''}>Home</a>
-
-    <a href="/about" class={currentPath === 'about' ? 'active' : ''}>About</a>
-  </div>
+  <ul class="flex items-center justify-center">
+    <li>
+      <a href="/" class={currentPath === '' ? 'active' : ''}>Home</a>
+    </li>
+    <li>
+      <a href="/about" class={currentPath === 'about' ? 'active' : ''}>About</a>
+    </li>
+  </ul>
 </nav>
 
 <style define:vars={{ dynamicColor }}>
   nav {
-    background-color: rgb(40, 43, 53);
     width: 100%;
   }
 
-  nav div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  nav ul {
+    height: 30px;
     padding: 1.5rem;
     margin-left: auto;
     margin-right: auto;
     color: rgb(164, 164, 164);
+    margin: 0 auto;
   }
 
-  nav div a {
+  nav ul li a {
     transition: all 0.3s ease-in-out;
     margin-left: 1.5rem;
     margin-right: 1.5rem;
     border-bottom: 2px solid transparent;
+    font-size: 20px;
   }
 
-  nav div a:hover {
+  nav ul li a:hover {
     color: rgb(241, 241, 241);
     border-bottom: 2px solid var(--dynamicColor);
   }

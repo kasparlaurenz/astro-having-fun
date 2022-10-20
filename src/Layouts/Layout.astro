@@ -1,5 +1,7 @@
 ---
 import Header from '@/components/Header/index.astro';
+
+const { title } = Astro.props;
 ---
 
 <html lang="en">
@@ -7,26 +9,21 @@ import Header from '@/components/Header/index.astro';
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="viewport" content="width=device-width" />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Shadows+Into+Light+Two|Kaushan+Script|ABeeZee"
+    />
     <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
+    <title>{title ? `kasparlaurenz | ${title}` : 'kasparlaurenz'}</title>
   </head>
   <body>
-    <Header />
     <div class="container">
-      <div class="p-12"></div>
-
-      <slot />
+      <Header />
+      <main>
+        <slot />
+      </main>
     </div>
 
-    <style>
-      .container {
-        margin-left: auto;
-        margin-right: auto;
-      }
-
-      .p-12 {
-        padding: 3rem;
-      }
-    </style>
+    <style></style>
   </body>
 </html>

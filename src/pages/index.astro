@@ -1,42 +1,120 @@
 ---
-import '@/style/global.css';
+import '@/style/global.scss';
 import Layout from '@/Layouts/Layout.astro';
 
 export const dynamicColor = 'rgb(151,233,242)';
 ---
 
 <Layout>
-  <h1 class="">Homepage</h1>
+  <div class="home flex flex-col items-start space-between">
+    <div class="spacer-4"></div>
+    <div class="flex flex-col">
+      <h1 class="text-gradient-animation">kasparlaurenz</h1>
+      <p>Web Developer from Germany</p>
+    </div>
 
-  <div>
-    <a href="/blog">Go to blog!</a>
+    <div>
+      <a class="" href="/blog"><span>Visit my blog</span></a>
+    </div>
+    <div class="spacer-2"></div>
   </div>
 </Layout>
 
-<style>
-  h1 {
-    margin-top: 20px;
-    font-size: 2rem;
-    font-weight: bold;
-  }
+<style lang="scss">
+  .home {
+    height: 100%;
 
-  div {
-    display: flex;
-    align-items: center;
-  }
+    p {
+      margin: 0;
+      font-size: 1.6rem;
+      font-family: 'ABeeZee';
+    }
+    div:not(div[class^='spacer-']) {
+      margin-top: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease-in-out;
 
-  div a {
-    padding: 10px 20px;
-    background-color: rgb(126, 174, 230);
-    border-radius: 20px;
-    color: white;
-    font-weight: bold;
-    margin-top: 20px;
-    transition: all 0.3s ease-in-out;
-  }
+      // &:hover {
+      //   transform: translateX(10px);
+      // }
 
-  div a:hover {
-    background-color: rgb(177, 208, 243);
-    cursor: pointer;
+      a {
+        position: relative;
+        background: #f7ba6a;
+        color: #fff;
+        border-radius: 20px;
+        width: 40px;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.4s ease-in-out;
+        overflow: hidden;
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        font-size: 0.9em;
+
+        &:hover {
+          width: 200px;
+          background: linear-gradient(
+            45deg,
+            rgba(247, 186, 106, 1) 0%,
+            rgba(223, 150, 55, 1) 100%
+          );
+          transition-delay: 0.4s;
+
+          span {
+            visibility: visible;
+            opacity: 1;
+            transition-delay: 0.75s;
+            transform: translateX(10px);
+          }
+
+          &::before {
+            transform: rotate(45deg) translate(50px, -50px);
+          }
+
+          &:after {
+            transform: rotate(45deg) translate(50px, -50px);
+            transition-delay: 1s;
+          }
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          right: 18px;
+          width: 5px;
+          height: 5px;
+          border-top: 3px solid #fff;
+          border-right: 3px solid #fff;
+          transform: rotate(45deg);
+          transition: 0.5s;
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          left: -60px;
+          width: 5px;
+          height: 5px;
+          border-top: 3px solid #fff;
+          border-right: 3px solid #fff;
+          transform: rotate(45deg) translate(-50px, 50px);
+          transition: 0.5s;
+        }
+
+        span {
+          visibility: hidden;
+          opacity: 0;
+          white-space: nowrap;
+          transition: 0.5s;
+          transform: translateX(-30px);
+        }
+      }
+    }
   }
 </style>
