@@ -4,7 +4,7 @@ This project was used to play around with astro
 
 I build a small site where you could possibly launch your own blog
 
-To run this project on your machine
+To run this project
 
 1. `npm install`
 
