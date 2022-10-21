@@ -39,6 +39,7 @@
   padding-right: 8px;
   color: transparent;
   font-weight: bold;
+  font-size: clamp(20px, 12vw + 1rem, 100px);
   font-family: 'Kaushan Script';
   letter-spacing: 1px;
   background-clip: text;
